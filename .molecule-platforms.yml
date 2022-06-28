@@ -1,0 +1,16 @@
+---
+
+- name: centos7
+  image: geerlingguy/docker-centos7-ansible:latest
+- name: centos8
+  image: geerlingguy/docker-centos8-ansible:latest
+- name: oraclelinux8
+  image: oraclelinux:8
+  privileged: true
+  pre_build_image: false
+- name: rockylinux8
+  image: geerlingguy/docker-rockylinux8-ansible:latest
+- name: fedora35
+  image: geerlingguy/docker-fedora35-ansible:latest
+- name: fedora36
+  image: geerlingguy/docker-fedora36-ansible:latest

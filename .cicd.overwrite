@@ -1,0 +1,67 @@
+---
+
+# Generic
+generic:
+  role: ansible-role-epel
+  role_short: epel
+  role_description: |
+    EPEL 
+
+# Supported platforms
+platforms:
+  - name: Red Hat Enterprise Linux 7
+    ci: false
+  - name: Red Hat Enterprise Linux 8
+    ci: false
+  - name: CentOS 7
+    image: centos7
+  - name: CentOS 8
+    image: centos8
+  - name: OracleLinux 8
+    image: oraclelinux8
+  - name: RockyLinux 8
+    image: rockylinux8
+  - name: AlmaLinux 8
+    image: almalinux8
+    ci: false
+  - name: Fedora 35
+    image: fedora35
+  - name: Fedora 36
+    image: fedora36
+
+# Ansible galaxy
+galaxy:
+  role_name: epel
+  namespace: de_it_krachten
+  description: epel
+  author: Mark van Huijstee
+  company: De IT Krachten BV
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Fedora
+      versions:
+        - all
+
+# molecule
+molecule:
+  active: true
+  platforms:
+    - name: centos7
+      image: "geerlingguy/docker-centos7-ansible:latest"
+    - name: centos8
+      image: "geerlingguy/docker-centos8-ansible:latest"
+    - name: oraclelinux8
+      image: 'oraclelinux:8'
+      privileged: true
+      pre_build_image: false
+    - name: rockylinux8
+      image: "geerlingguy/docker-rockylinux8-ansible:latest"
+    - name: fedora35
+      image: "geerlingguy/docker-fedora35-ansible:latest"
+    - name: fedora36
+      image: "geerlingguy/docker-fedora36-ansible:latest"
