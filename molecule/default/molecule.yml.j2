@@ -12,6 +12,7 @@ platforms:
 {% for platform in MOLECULE_DISTROS %}
   - name: epel-{{ platform.name }}
     image: "{{ platform.image }}"
+    rhsm: {{ platform.rhsm | default(False) }}
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro

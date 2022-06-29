@@ -11,14 +11,14 @@ EPEL
 Supported platforms
 
 - Red Hat Enterprise Linux 7<sup>1</sup>
-- Red Hat Enterprise Linux 8<sup>1</sup>
+- Red Hat Enterprise Linux 8
+- Red Hat Enterprise Linux 9
 - CentOS 7
 - CentOS 8
 - OracleLinux 8
 - RockyLinux 8
-- AlmaLinux 8<sup>1</sup>
-- Fedora 35
-- Fedora 36
+- AlmaLinux 8
+- AlmaLinux 9
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
@@ -78,7 +78,21 @@ epel_package: oracle-epel-release-el{{ ansible_distribution_major_version }}
 - name: sample playbook for role 'epel'
   hosts: all
   vars:
+  pre_tasks:
+    - name: Create 'remote_tmp'
+      file:
+        path: /root/.ansible/tmp
+        state: directory
+        mode: "0700"
+
   tasks:
+    # - name: Include role 'rhsm'
+    #   include_role:
+    #     name: rhsm
+    #   when:
+    #     - ansible_distribution == 'RedHat'
+    #     - ansible_distribution_major_version == '8'
+
     - name: Include role 'epel'
       include_role:
         name: epel

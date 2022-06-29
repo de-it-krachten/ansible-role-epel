@@ -7,27 +7,24 @@ generic:
   role_description: |
     EPEL 
 
+github:
+  fail_fast: false
+  vars:
+    RHSM_ORG_ID: "${{ secrets.RHSM_ORG_ID }}"
+    RHSM_ACTIVATIONKEY: "${{ secrets.RHSM_ACTIVATIONKEY }}"
+
 # Supported platforms
 platforms:
   - name: Red Hat Enterprise Linux 7
     ci: false
   - name: Red Hat Enterprise Linux 8
-    ci: false
+  - name: Red Hat Enterprise Linux 9
   - name: CentOS 7
-    image: centos7
   - name: CentOS 8
-    image: centos8
   - name: OracleLinux 8
-    image: oraclelinux8
   - name: RockyLinux 8
-    image: rockylinux8
   - name: AlmaLinux 8
-    image: almalinux8
-    ci: false
-  - name: Fedora 35
-    image: fedora35
-  - name: Fedora 36
-    image: fedora36
+  - name: AlmaLinux 9
 
 # Ansible galaxy
 galaxy:
@@ -43,25 +40,33 @@ galaxy:
       versions:
         - 7
         - 8
-    - name: Fedora
-      versions:
-        - all
+        - 9
 
 # molecule
 molecule:
   active: true
   platforms:
+#    - name: rhel7
+#      image: "dropveter/rhel7-ansible:latest"
+    - name: rhel8
+      image: "dropveter/rhel8-ansible:latest"
+    - name: rhel9
+      image: "dropveter/rhel9-ansible:latest"
     - name: centos7
       image: "geerlingguy/docker-centos7-ansible:latest"
     - name: centos8
       image: "geerlingguy/docker-centos8-ansible:latest"
-    - name: oraclelinux8
-      image: 'oraclelinux:8'
-      privileged: true
-      pre_build_image: false
     - name: rockylinux8
       image: "geerlingguy/docker-rockylinux8-ansible:latest"
-    - name: fedora35
-      image: "geerlingguy/docker-fedora35-ansible:latest"
-    - name: fedora36
-      image: "geerlingguy/docker-fedora36-ansible:latest"
+    - name: oraclelinux8
+      image: "dropveter/oraclelinux8-ansible:latest"
+    - name: almalinux8
+      image: "dropveter/almalinux8-ansible:latest"
+    - name: almalinux9
+      image: "dropveter/almalinux9-ansible:latest"
+
+ci_templates:
+  converge.yml:
+    force: false
+  requirements.yml:
+    force: false
