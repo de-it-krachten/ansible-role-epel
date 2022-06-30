@@ -1,13 +1,60 @@
 ---
 
-- name: Include variables
-  include_vars: "{{ item }}"
-  with_first_found:
-    - "{{ role_path }}/vars/{{ ansible_distribution }}.yml"
-    - "{{ role_path }}/vars/family-{{ ansible_os_family }}.yml"
-    - "{{ role_path }}/vars/main.yml"
+- name: OS check
+  fail:
+    msg: "This role is only meant for platforms in the Red Hat family"
+  when: ansible_os_family != 'RedHat'
 
-- name: Activate epel
-  yum:
-    name: "{{ epel_package }}"
-    state: present
+- name: Load variables based on OS type
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "family-{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
+        - "family-{{ ansible_os_family }}.yml"
+        - default.yml
+      paths:
+        - 'vars'
+
+- name: Create /etc/ansible/facts.d
+  file:
+    path: /etc/ansible/facts.d
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Distribute repolist.fact
+  copy:
+    src: repolist.fact
+    dest: /etc/ansible/facts.d/repolist.fact
+    owner: root
+    group: root
+    mode: "0755"
+  register: _facts
+
+- name: Execute setup  # noqa no-handler
+  setup:
+  when: _facts.changed
+
+- name: Install epel using distro specific code
+  include_tasks: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "family-{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
+        - "family-{{ ansible_os_family }}.yml"
+        - default.yml
+      paths:
+        - 'tasks'
+  when: epel_mode == 'enabled'
+
+- name: Disable epel
+  package:
+    name: epel-release
+    state: absent
+  when: epel_mode == 'disabled'

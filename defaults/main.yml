@@ -1,0 +1,10 @@
+---
+
+# EPEL rpm url
+epel_package: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+
+# EPEL GPG download location
+epel_gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+
+# Mode to operate in
+epel_mode: enabled

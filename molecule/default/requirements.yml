@@ -1,0 +1,9 @@
+---
+
+roles:
+
+  - name: rhsm
+    src: https://github.com/de-it-krachten/ansible-role-rhsm.git
+    # version: main
+    version: dev
+    scm: git

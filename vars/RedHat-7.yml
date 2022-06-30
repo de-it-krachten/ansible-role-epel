@@ -1,0 +1,7 @@
+---
+
+# List of satellite repositories to enable
+satellite_repositories:
+  - "rhel-*-optional-rpms"
+  - "rhel-*-extras-rpms"
+  - "rhel-ha-for-rhel-*-server-rpms"
