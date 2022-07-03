@@ -1,9 +1,5 @@
 ---
 
-- name: rhel8
-  image: dropveter/rhel8-ansible:latest
-- name: rhel9
-  image: dropveter/rhel9-ansible:latest
 - name: centos7
   image: geerlingguy/docker-centos7-ansible:latest
 - name: centos8
@@ -11,8 +7,8 @@
 - name: rockylinux8
   image: geerlingguy/docker-rockylinux8-ansible:latest
 - name: oraclelinux8
-  image: dropveter/oraclelinux8-ansible:latest
+  image: dropveter/oraclelinux8-ansible
 - name: almalinux8
-  image: dropveter/almalinux8-ansible:latest
+  image: dropveter/almalinux8-ansible
 - name: almalinux9
-  image: dropveter/almalinux9-ansible:latest
+  image: dropveter/almalinux9-ansible
