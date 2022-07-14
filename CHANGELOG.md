@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.0.1...v1.1.0) (2022-07-14)
+
+
+### Features
+
+* add support for private EPEL repositories ([b6fb4dd](https://github.com/de-it-krachten/ansible-role-epel/commit/b6fb4dd4c2517ce60ff6b9e56be0464e8190297a))
+
 ## [1.0.1](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.0.0...v1.0.1) (2022-06-30)
 
 
