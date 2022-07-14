@@ -1,5 +1,5 @@
 ---
 
 # List of satellite repositories to enable
-satellite_repositories:
-  - "codeready-builder-for-rhel-8-x86_64-rpms"
+epel_satellite_repositories_default:
+  - codeready-builder-for-rhel-8-x86_64-rpms

@@ -51,10 +51,10 @@
         - default.yml
       paths:
         - 'tasks'
-  when: epel_mode == 'enabled'
+  when: epel_state == 'enabled'
 
 - name: Disable epel
   package:
     name: epel-release
     state: absent
-  when: epel_mode == 'disabled'
+  when: epel_state == 'disabled'

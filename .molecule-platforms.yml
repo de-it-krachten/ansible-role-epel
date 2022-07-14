@@ -1,5 +1,14 @@
 ---
 
+- name: rhel7
+  image: registry.access.redhat.com/ubi7/ubi-init:latest
+  pre_build_image: false
+- name: rhel8
+  image: registry.access.redhat.com/ubi8/ubi-init:latest
+  pre_build_image: false
+- name: rhel9
+  image: registry.access.redhat.com/ubi9/ubi-init:latest
+  pre_build_image: false
 - name: centos7
   image: geerlingguy/docker-centos7-ansible:latest
 - name: centos8

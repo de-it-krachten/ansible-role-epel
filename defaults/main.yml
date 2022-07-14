@@ -1,10 +1,41 @@
 ---
 
+# list of default satellite repostories to enable
+epel_satellite_repositories_default: []
+
+# list of epel satellite repostories to disable
+epel_satellite_repositories_epel: []
+
+# Mode to operate in
+epel_state: enabled
+
+
+# ----------------------------------------------------------------
+# EPEL mode 'public'
+# ----------------------------------------------------------------
+
+# EPEL mode 
+epel_mode: public
+
 # EPEL rpm url
 epel_package: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 
 # EPEL GPG download location
 epel_gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
 
-# Mode to operate in
-epel_mode: enabled
+
+# ----------------------------------------------------------------
+# EPEL mode 'private'
+# ----------------------------------------------------------------
+
+# EPEL mode 
+# epel_mode: private
+
+# EPEL repo name
+epel_repo_name: epel
+
+# EPEL repository description
+epel_repo_description: epel
+
+# EPEL repository url
+# epel_repo_url: https://www.example.com/epel

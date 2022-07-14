@@ -10,9 +10,9 @@ EPEL
 
 Supported platforms
 
-- Red Hat Enterprise Linux 7<sup>1</sup>
-- Red Hat Enterprise Linux 8<sup>1</sup>
-- Red Hat Enterprise Linux 9<sup>1</sup>
+- Red Hat Enterprise Linux 7
+- Red Hat Enterprise Linux 8
+- Red Hat Enterprise Linux 9
 - CentOS 7
 - CentOS 8
 - RockyLinux 8
@@ -26,21 +26,52 @@ Note:
 ## Role Variables
 ### defaults/main.yml
 <pre><code>
+# list of default satellite repostories to enable
+epel_satellite_repositories_default: []
+
+# list of epel satellite repostories to disable
+epel_satellite_repositories_epel: []
+
+# Mode to operate in
+epel_state: enabled
+
+
+# ----------------------------------------------------------------
+# EPEL mode 'public'
+# ----------------------------------------------------------------
+
+# EPEL mode 
+epel_mode: public
+
 # EPEL rpm url
 epel_package: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 
 # EPEL GPG download location
 epel_gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
 
-# Mode to operate in
-epel_mode: enabled
+
+# ----------------------------------------------------------------
+# EPEL mode 'private'
+# ----------------------------------------------------------------
+
+# EPEL mode 
+# epel_mode: private
+
+# EPEL repo name
+epel_repo_name: epel
+
+# EPEL repository description
+epel_repo_description: epel
+
+# EPEL repository url
+# epel_repo_url: https://www.example.com/epel
 </pre></code>
 
 ### vars/RedHat-8.yml
 <pre><code>
 # List of satellite repositories to enable
-satellite_repositories:
-  - "codeready-builder-for-rhel-8-x86_64-rpms"
+epel_satellite_repositories_default:
+  - codeready-builder-for-rhel-8-x86_64-rpms
 </pre></code>
 
 ### vars/default.yml
@@ -51,17 +82,17 @@ satellite_repositories:
 ### vars/RedHat-9.yml
 <pre><code>
 # List of satellite repositories to enable
-satellite_repositories:
-  - "codeready-builder-for-rhel-9-x86_64-rpms"
+epel_satellite_repositories_default:
+  - codeready-builder-for-rhel-9-x86_64-rpms
 </pre></code>
 
 ### vars/RedHat-7.yml
 <pre><code>
 # List of satellite repositories to enable
-satellite_repositories:
-  - "rhel-*-optional-rpms"
-  - "rhel-*-extras-rpms"
-  - "rhel-ha-for-rhel-*-server-rpms"
+epel_satellite_repositories_default:
+  - rhel-7-server-extras-rpms
+  - rhel-7-server-optional-rpms
+  - rhel-ha-for-rhel-7-server-rpms
 </pre></code>
 
 ### vars/OracleLinux.yml
