@@ -16,25 +16,28 @@ github:
 platforms:
   rhel7:
     name: Red Hat Enterprise Linux 7
-    ci: false
+    ci: true
     supported: true
-    image: "dropveter/rhel7-ansible"
+    image: "registry.access.redhat.com/ubi7/ubi-init:latest"
+    pre_build_image: false
     galaxy:
       name: EL
       version: 7
   rhel8:
     name: Red Hat Enterprise Linux 8
-    ci: false
+    ci: true
     supported: true
-    image: "dropveter/rhel8-ansible"
+    image: "registry.access.redhat.com/ubi8/ubi-init:latest"
+    pre_build_image: false
     galaxy:
       name: EL
       version: 8
   rhel9:
     name: Red Hat Enterprise Linux 9
-    ci: false
+    ci: true
     supported: true
-    image: "dropveter/rhel9-ansible"
+    image: "registry.access.redhat.com/ubi9/ubi-init:latest"
+    pre_build_image: false
     galaxy:
       name: EL
       version: 9
@@ -107,7 +110,7 @@ platforms:
   fedora36:
     ci: false
     supported: false
-  alpine:
+  alpine3:
     ci: false
     supported: false
 

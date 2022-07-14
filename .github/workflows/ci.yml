@@ -64,6 +64,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - distro: rhel7
+            playbook: converge.yml
+            # continue_on_error: false
+            # failfast: true
+          - distro: rhel8
+            playbook: converge.yml
+            # continue_on_error: false
+            # failfast: true
+          - distro: rhel9
+            playbook: converge.yml
+            # continue_on_error: false
+            # failfast: true
           - distro: centos7
             playbook: converge.yml
             # continue_on_error: false

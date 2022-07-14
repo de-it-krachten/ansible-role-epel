@@ -2,14 +2,45 @@
 
 - name: Activate powertools
   command: dnf config-manager --set-enabled powertools
+  become: yes
   when: "'powertools' in ansible_local['repolist']['disabled']"
 
-- name: Import EPEL GPG key
-  rpm_key:
-    key: "{{ epel_gpgkey }}"
-    state: present
+- name: Setup public EPEL repository
+  block:
 
-- name: Install EPEL package
-  package:
-    name: "{{ epel_package }}"
-    state: present
+    - name: Import EPEL GPG key
+      rpm_key:
+        key: "{{ epel_gpgkey }}"
+        state: present
+
+    - name: Install EPEL package
+      package:
+        name: "{{ epel_package }}"
+        state: present
+
+  when: epel_mode == 'public'
+  become: yes
+
+- name: Setup private EPEL repository
+  block:
+
+    - name: Download RPM signing key
+      get_url:
+        url: "{{ epel_gpg_url }}"
+        dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+        validate_certs: "{{ epel_gpg_url_validate_certs | default(True) }}"
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Add EPEL repository (proxy)
+      yum_repository:
+        name: "{{ epel_repo_name }}"
+        description: "{{ epel_repo_description }}"
+        baseurl: "{{ epel_repo_url }}"
+        enabled: yes
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+        gpgcheck: yes
+
+  when: epel_mode == 'private'
+  become: yes
