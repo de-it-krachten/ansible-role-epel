@@ -15,80 +15,32 @@ github:
 # Supported platforms
 platforms:
   rhel7:
-    name: Red Hat Enterprise Linux 7
     ci: true
     supported: true
-    image: "registry.access.redhat.com/ubi7/ubi-init:latest"
-    pre_build_image: false
-    galaxy:
-      name: EL
-      version: 7
   rhel8:
-    name: Red Hat Enterprise Linux 8
     ci: true
     supported: true
-    image: "registry.access.redhat.com/ubi8/ubi-init:latest"
-    pre_build_image: false
-    galaxy:
-      name: EL
-      version: 8
   rhel9:
-    name: Red Hat Enterprise Linux 9
     ci: true
     supported: true
-    image: "registry.access.redhat.com/ubi9/ubi-init:latest"
-    pre_build_image: false
-    galaxy:
-      name: EL
-      version: 9
   centos7:
-    name: CentOS 7
     ci: true
     supported: true
-    image: "geerlingguy/docker-centos7-ansible:latest"
-    galaxy:
-      name: EL
-      version: 7
   centos8:
-    name: CentOS 8
     ci: true
     supported: true
-    image: "geerlingguy/docker-centos8-ansible:latest"
-    galaxy:
-      name: EL
-      version: 8
+  centos8s:
+    ci: true
+    supported: true
+  centos9s:
+    ci: true
+    supported: true
   rockylinux8:
-    name: RockyLinux 8
     ci: true
     supported: true
-    image: "geerlingguy/docker-rockylinux8-ansible:latest"
-    galaxy:
-      name: EL
-      version: 8
-  oraclelinux8:
-    name: OracleLinux 8
+  rockylinux9:
     ci: true
     supported: true
-    image: "dropveter/oraclelinux8-ansible"
-    galaxy:
-      name: EL
-      version: 8
-  almalinux8:
-    name: AlmaLinux 8
-    ci: true
-    supported: true
-    image: "dropveter/almalinux8-ansible"
-    galaxy:
-      name: EL
-      version: 8
-  almalinux9:
-    name: AlmaLinux 9
-    ci: true
-    supported: true
-    image: "dropveter/almalinux9-ansible"
-    galaxy:
-      name: EL
-      version: 9
   debian10:
     ci: false
     supported: false
