@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.2.0...v1.3.0) (2022-07-20)
+
+
+### Bug Fixes
+
+* Reactivate CI ([42e61c5](https://github.com/de-it-krachten/ansible-role-epel/commit/42e61c581b7aa6091c794681050db41cb06551af))
+
+
+### Features
+
+* Add support for RockyLinux 9 + CentOS Stream 8/9 ([162550a](https://github.com/de-it-krachten/ansible-role-epel/commit/162550ad72b57643b18d108ddaf1fc3b86a6ff6a))
+
 # [1.2.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.1.0...v1.2.0) (2022-07-20)
 
 
