@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.1.0...v1.2.0) (2022-07-20)
+
+
+### Features
+
+* Add support for RockyLinux 9 + CentOS Stream 8/9 ([25d28ed](https://github.com/de-it-krachten/ansible-role-epel/commit/25d28eda382382612b5110d060f9846f85f13774))
+
 # [1.1.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.0.1...v1.1.0) (2022-07-14)
 
 
