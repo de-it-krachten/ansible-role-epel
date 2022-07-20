@@ -3,7 +3,7 @@
 
 # ansible-role-epel
 
-EPEL 
+Installs and activates EPEL on a variety of RedHat flavors 
 
 
 ## Platforms
@@ -143,23 +143,10 @@ epel_packages:
 <pre><code>
 - name: sample playbook for role 'epel'
   hosts: all
+  become: "{{ molecule['converge']['become'] | default('yes') }}"
   vars:
-  pre_tasks:
-    - name: Create 'remote_tmp'
-      file:
-        path: /root/.ansible/tmp
-        state: directory
-        mode: "0700"
-
   tasks:
-    # - name: Include role 'rhsm'
-    #   include_role:
-    #     name: rhsm
-    #   when:
-    #     - ansible_distribution == 'RedHat'
-    #     - ansible_distribution_major_version == '8'
-
-#    - name: Include role 'epel'
-#      include_role:
-#        name: epel
+    - name: Include role 'epel'
+      include_role:
+        name: epel
 </pre></code>

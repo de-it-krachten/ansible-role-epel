@@ -5,12 +5,7 @@ generic:
   role: ansible-role-epel
   role_short: epel
   role_description: |
-    EPEL 
-
-github:
-  vars:
-    RHSM_ORG_ID: "${{ secrets.RHSM_ORG_ID }}"
-    RHSM_ACTIVATIONKEY: "${{ secrets.RHSM_ACTIVATIONKEY }}"
+    Installs and activates EPEL on a variety of RedHat flavors 
 
 # Supported platforms
 platforms:
@@ -65,12 +60,3 @@ platforms:
   alpine3:
     ci: false
     supported: false
-
-ci_templates:
-  converge.yml:
-    force: false
-
-molecule:
-  requirements:
-    roles_extra:
-      - rhsm

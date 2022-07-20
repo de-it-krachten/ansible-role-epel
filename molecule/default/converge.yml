@@ -2,22 +2,9 @@
 
 - name: Converge
   hosts: all
+  become: "{{ molecule['converge']['become'] | default('yes') }}"
   vars:
-  pre_tasks:
-    - name: Create 'remote_tmp'
-      file:
-        path: /root/.ansible/tmp
-        state: directory
-        mode: "0700"
-
   tasks:
-    # - name: Include role 'ansible-role-rhsm'
-    #   include_role:
-    #     name: rhsm
-    #   when:
-    #     - ansible_distribution == 'RedHat'
-    #     - ansible_distribution_major_version == '8'
-
-#    - name: Include role 'ansible-role-epel'
-#      include_role:
-#        name: ansible-role-epel
+    - name: Include role 'ansible-role-epel'
+      include_role:
+        name: ansible-role-epel
