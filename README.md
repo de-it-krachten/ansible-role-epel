@@ -146,20 +146,7 @@ epel_packages:
   become: "{{ molecule['converge']['become'] | default('yes') }}"
   vars:
   tasks:
-<<<<<<< HEAD
     - name: Include role 'epel'
       include_role:
         name: epel
-=======
-    # - name: Include role 'rhsm'
-    #   include_role:
-    #     name: rhsm
-    #   when:
-    #     - ansible_distribution == 'RedHat'
-    #     - ansible_distribution_major_version == '8'
-
-#    - name: Include role 'epel'
-#      include_role:
-#        name: epel
->>>>>>> 25d28eda382382612b5110d060f9846f85f13774
 </pre></code>
