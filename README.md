@@ -15,7 +15,10 @@ Supported platforms
 - Red Hat Enterprise Linux 9
 - CentOS 7
 - CentOS 8
+- CentOS Stream 8
+- CentOS Stream 9
 - RockyLinux 8
+- RockyLinux 9
 - OracleLinux 8
 - AlmaLinux 8
 - AlmaLinux 9
@@ -44,7 +47,8 @@ epel_state: enabled
 epel_mode: public
 
 # EPEL rpm url
-epel_package: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+epel_packages:
+  - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 
 # EPEL GPG download location
 epel_gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
@@ -74,9 +78,24 @@ epel_satellite_repositories_default:
   - codeready-builder-for-rhel-8-x86_64-rpms
 </pre></code>
 
+### vars/CentOS-Stream-8.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+  - epel-next-release
+</pre></code>
+
 ### vars/default.yml
 <pre><code>
 
+</pre></code>
+
+### vars/CentOS-8.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
 </pre></code>
 
 ### vars/RedHat-9.yml
@@ -98,7 +117,23 @@ epel_satellite_repositories_default:
 ### vars/OracleLinux.yml
 <pre><code>
 # OracleLinux RPM
-epel_package: oracle-epel-release-el{{ ansible_distribution_major_version }}
+epel_packages:
+  - oracle-epel-release-el{{ ansible_distribution_major_version }}
+</pre></code>
+
+### vars/CentOS-7.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+</pre></code>
+
+### vars/CentOS-Stream-9.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+  - epel-next-release
 </pre></code>
 
 
@@ -124,7 +159,7 @@ epel_package: oracle-epel-release-el{{ ansible_distribution_major_version }}
     #     - ansible_distribution == 'RedHat'
     #     - ansible_distribution_major_version == '8'
 
-    - name: Include role 'epel'
-      include_role:
-        name: epel
+#    - name: Include role 'epel'
+#      include_role:
+#        name: epel
 </pre></code>

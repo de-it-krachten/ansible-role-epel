@@ -1,0 +1,6 @@
+---
+
+# List of EPEL packages
+epel_packages:
+  - epel-release
+  - epel-next-release
