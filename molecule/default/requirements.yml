@@ -25,7 +25,3 @@ roles:
     src: https://github.com/de-it-krachten/ansible-role-unbound.git
     version: main
     scm: git
-  - name: rhsm
-    src: https://github.com/de-it-krachten/ansible-role-rhsm.git
-    version: main
-    scm: git
