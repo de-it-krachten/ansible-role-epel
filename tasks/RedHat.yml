@@ -40,7 +40,7 @@
 
     - name: Install EPEL package
       package:
-        name: "{{ epel_package }}"
+        name: "{{ epel_packages }}"
         state: present
 
   when: epel_mode == 'public'
