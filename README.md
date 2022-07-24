@@ -144,7 +144,6 @@ epel_packages:
 - name: sample playbook for role 'epel'
   hosts: all
   become: "{{ molecule['converge']['become'] | default('yes') }}"
-  vars:
   tasks:
     - name: Include role 'epel'
       include_role:
