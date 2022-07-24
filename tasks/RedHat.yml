@@ -7,7 +7,8 @@
   register: _sat_sub
   become: yes
 
-- block:
+- name: Activate RHEL repositories from RHSM/Satellite
+  block:
 
     - name: Get list of activated satellite repositories
       command: subscription-manager repos --list-enabled
