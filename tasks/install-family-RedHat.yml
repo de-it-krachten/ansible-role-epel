@@ -1,0 +1,11 @@
+---
+
+- name: Activate powertools repository
+  command: dnf config-manager --set-enabled powertools
+  become: yes
+  when: "'powertools' in ansible_local['repolist']['disabled']"
+
+- name: Activate crb repository
+  command: dnf config-manager --set-enabled crb
+  become: yes
+  when: "'crb' in ansible_local['repolist']['disabled']"

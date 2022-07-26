@@ -19,43 +19,11 @@
       paths:
         - 'vars'
 
-- name: Create /etc/ansible/facts.d
-  file:
-    path: /etc/ansible/facts.d
-    state: directory
-    owner: root
-    group: root
-    mode: "0755"
-
-- name: Distribute repolist.fact
-  copy:
-    src: repolist.fact
-    dest: /etc/ansible/facts.d/repolist.fact
-    owner: root
-    group: root
-    mode: "0755"
-  register: _facts
-
-- name: Execute setup  # noqa no-handler
-  setup:
-  when: _facts.changed
-
-- name: Install epel using distro specific code
-  include_tasks: "{{ lookup('first_found', params) }}"
-  vars:
-    params:
-      files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "family-{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
-        - "family-{{ ansible_os_family }}.yml"
-        - default.yml
-      paths:
-        - 'tasks'
+- name: Setup EPEL
+  include_tasks: install.yml
   when: epel_state == 'enabled'
 
-- name: Disable epel
+- name: Disable EPEL
   package:
     name: epel-release
     state: absent

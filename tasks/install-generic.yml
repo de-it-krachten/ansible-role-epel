@@ -1,0 +1,45 @@
+---
+
+- name: Download RPM signing key
+  get_url:
+    url: "{{ epel_gpgkey_url }}"
+    dest: "{{ epel_gpgkey_file }}"
+    validate_certs: "{{ epel_gpg_url_validate_certs | default(True) }}"
+    owner: root
+    group: root
+    mode: "0644"
+  environment:
+    https_proxy: "{{ epel_https_proxy | default(https_proxy) | default('') }}"
+    http_proxy: "{{ epel_http_proxy | default(http_proxy) | default('') }}"
+    no_proxy: "{{ epel_no_proxy | default(no_proxy) | default('') }}"
+
+- name: Setup public EPEL repository
+  block:
+
+    - name: Import EPEL GPG key
+      rpm_key:
+        key: "{{ epel_gpgkey_file }}"
+        state: present
+
+    - name: Install EPEL package
+      package:
+        name: "{{ epel_packages }}"
+        state: present
+
+  when: epel_mode == 'public'
+  become: yes
+
+- name: Setup private EPEL repository
+  block:
+
+    - name: Add EPEL repository (proxy)
+      yum_repository:
+        name: "{{ epel_repo_name }}"
+        description: "{{ epel_repo_description }}"
+        baseurl: "{{ epel_repo_url }}"
+        enabled: yes
+        gpgkey: file://{{ epel_gpgkey_file }}
+        gpgcheck: yes
+
+  when: epel_mode == 'private'
+  become: yes

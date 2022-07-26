@@ -1,0 +1,31 @@
+---
+
+- name: Test subscription status
+  command: subscription-manager status
+  changed_when: no
+  failed_when: no
+  register: _sat_sub
+  become: yes
+
+- name: Activate RHEL repositories from RHSM/Satellite
+  block:
+
+    - name: Get list of activated satellite repositories
+      command: subscription-manager repos --list-enabled
+      check_mode: no
+      changed_when: no
+      register: sat
+
+    - name: Enable satellite repositories
+      command: subscription-manager repos --enable {{ item }}
+      failed_when: no
+      loop: "{{ epel_satellite_repositories_default }}"
+      when: item not in sat.stdout
+
+    - name: Disable epel repository from satellite
+      command: subscription-manager repos --disable {{ item }}
+      loop: "{{ epel_satellite_repositories_epel }}"
+      when: item in sat.stdout
+
+  become: yes
+  when: _sat_sub.rc == 0
