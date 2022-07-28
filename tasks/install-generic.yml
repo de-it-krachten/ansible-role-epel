@@ -1,0 +1,88 @@
+---
+
+- name: Define proxy to use
+  set_fact:
+    _epel_https_proxy: "{{ epel_https_proxy | default(https_proxy) | default('') }}"
+    _epel_http_proxy: "{{ epel_http_proxy | default(http_proxy) | default('') }}"
+    _epel_no_proxy: "{{ epel_no_proxy | default(no_proxy) | default('') }}"
+
+- name: Show proxy settings
+  debug:
+    msg:
+      https_proxy: "{{ _epel_https_proxy }}"
+      http_proxy: "{{ _epel_http_proxy }}"
+      no_proxy: "{{ _epel_no_proxy }}"
+  when: _epel_https_proxy|length > 0
+
+- name: Download RPM signing key
+  get_url:
+    url: "{{ epel_gpgkey_url }}"
+    dest: "{{ epel_gpgkey_file }}"
+    validate_certs: "{{ epel_gpg_url_validate_certs | default(True) }}"
+    owner: root
+    group: root
+    mode: "0644"
+  environment:
+    https_proxy: "{{ _epel_https_proxy }}"
+    http_proxy: "{{ _epel_http_proxy }}"
+    no_proxy: "{{ _epel_no_proxy }}"
+
+- name: Install EPEL from public RPM
+  block:
+
+    - name: Import RPM signing key
+      rpm_key:
+        key: "{{ epel_gpgkey_file }}"
+        state: present
+
+    - name: Download RPM package
+      get_url:
+        url: "{{ epel_rpm_package }}"
+        dest: "/tmp/{{ epel_rpm_package | basename }}"
+        validate_certs: "{{ epel_gpg_url_validate_certs | default(True) }}"
+        owner: root
+        group: root
+        mode: "0644"
+      environment:
+        https_proxy: "{{ epel_https_proxy | default(https_proxy) | default('') }}"
+        http_proxy: "{{ epel_http_proxy | default(http_proxy) | default('') }}"
+        no_proxy: "{{ epel_no_proxy | default(no_proxy) | default('') }}"
+
+    - name: Install RPM package
+      yum:
+        name: "/tmp/{{ epel_rpm_package | basename }}"
+        state: present
+
+  become: yes
+  when:
+    - epel_mode == 'public'
+    - epel_packages is undefined or epel_packages|length == 0
+
+
+- name: Install EPEL from vendor packages
+  block:
+
+    - name: Install RPM package
+      yum:
+        name: "{{ epel_packages }}"
+        state: present
+
+  become: yes
+  when:
+    - epel_mode == 'public'
+    - epel_packages is defined and epel_packages|length > 0
+
+- name: Setup private EPEL repository
+  block:
+
+    - name: Add EPEL repository (proxy)
+      yum_repository:
+        name: "{{ epel_repo_name }}"
+        description: "{{ epel_repo_description }}"
+        baseurl: "{{ epel_repo_url }}"
+        enabled: yes
+        gpgkey: file://{{ epel_gpgkey_file }}
+        gpgcheck: yes
+
+  become: yes
+  when: epel_mode == 'private'

@@ -51,7 +51,10 @@ epel_packages:
   - https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
 
 # EPEL GPG download location
-epel_gpgkey: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+epel_gpgkey_url: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+
+# Location of GPG key on disk
+epel_gpgkey_file: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
 
 
 # ----------------------------------------------------------------
@@ -144,7 +147,6 @@ epel_packages:
 - name: sample playbook for role 'epel'
   hosts: all
   become: "{{ molecule['converge']['become'] | default('yes') }}"
-  vars:
   tasks:
     - name: Include role 'epel'
       include_role:
