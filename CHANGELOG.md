@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.3.0...v1.4.0) (2022-07-28)
+
+
+### Features
+
+* Add support for GPG key download via proxy ([1926685](https://github.com/de-it-krachten/ansible-role-epel/commit/192668542938e9b40666524f1a3cd98e1e2cc399))
+* Add support for proxy download of RPM ([5b9ba55](https://github.com/de-it-krachten/ansible-role-epel/commit/5b9ba558ead9ac7fc34f3e2e0b8ba3ac9f732617))
+* Implement ansible-lint v6 support ([b12896e](https://github.com/de-it-krachten/ansible-role-epel/commit/b12896ea3cc6809113710b117aa6f925afdac8a2))
+
 # [1.3.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.2.0...v1.3.0) (2022-07-20)
 
 
