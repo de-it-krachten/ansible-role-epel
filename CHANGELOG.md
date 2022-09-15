@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.4.0...v1.4.1) (2022-09-15)
+
+
+### Bug Fixes
+
+* Removed false changes on non-existant repositories ([c07164c](https://github.com/de-it-krachten/ansible-role-epel/commit/c07164c708e91273a32c1dd7260fb1f2741c6b67))
+
 # [1.4.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.3.0...v1.4.0) (2022-07-28)
 
 
