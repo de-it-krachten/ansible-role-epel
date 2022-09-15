@@ -14,18 +14,24 @@
       command: subscription-manager repos --list-enabled
       check_mode: no
       changed_when: no
-      register: sat
+      register: sat_enabled
+
+    - name: Get list of disabled satellite repositories
+      command: subscription-manager repos --list-disabled
+      check_mode: no
+      changed_when: no
+      register: sat_disabled
 
     - name: Enable satellite repositories
       command: subscription-manager repos --enable {{ item }}
       failed_when: no
       loop: "{{ epel_satellite_repositories_default }}"
-      when: item not in sat.stdout
+      when: item in sat_disabled.stdout
 
     - name: Disable epel repository from satellite
       command: subscription-manager repos --disable {{ item }}
       loop: "{{ epel_satellite_repositories_epel }}"
-      when: item in sat.stdout
+      when: item in sat_enabled.stdout
 
   become: yes
   when: _sat_sub.rc == 0
