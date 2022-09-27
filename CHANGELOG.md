@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.4.1...v1.4.2) (2022-09-27)
+
+
+### Bug Fixes
+
+* Remove warning messages ([ad7f285](https://github.com/de-it-krachten/ansible-role-epel/commit/ad7f285430ae9f5b8c0ee5515f64542ab903a80a))
+
 ## [1.4.1](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.4.0...v1.4.1) (2022-09-15)
 
 
