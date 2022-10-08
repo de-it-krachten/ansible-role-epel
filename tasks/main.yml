@@ -1,12 +1,12 @@
 ---
 
 - name: OS check
-  fail:
+  ansible.builtin.fail:
     msg: "This role is only meant for platforms in the Red Hat family"
   when: ansible_os_family != 'RedHat'
 
 - name: Load variables based on OS type
-  include_vars: "{{ lookup('first_found', params) }}"
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
   vars:
     params:
       files:
@@ -20,11 +20,11 @@
         - 'vars'
 
 - name: Setup EPEL
-  include_tasks: install.yml
+  ansible.builtin.include_tasks: install.yml
   when: epel_state == 'enabled'
 
 - name: Disable EPEL
-  package:
+  ansible.builtin.package:
     name: epel-release
     state: absent
   when: epel_state == 'disabled'

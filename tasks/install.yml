@@ -1,7 +1,7 @@
 ---
 
 - name: Create /etc/ansible/facts.d
-  file:
+  ansible.builtin.file:
     path: /etc/ansible/facts.d
     state: directory
     owner: root
@@ -9,7 +9,7 @@
     mode: "0755"
 
 - name: Distribute repolist.fact
-  copy:
+  ansible.builtin.copy:
     src: repolist.fact
     dest: /etc/ansible/facts.d/repolist.fact
     owner: root
@@ -18,16 +18,16 @@
   register: _facts
 
 - name: Execute setup  # noqa no-handler
-  setup:
+  ansible.builtin.setup:
   when: _facts.changed
 
 - name: Run code for 'RHEL'
-  include_tasks: install-RedHat.yml
+  ansible.builtin.include_tasks: install-RedHat.yml
   when: ansible_distribution == 'RedHat'
 
 - name: Run code for RHEL compatibles
-  include_tasks: install-family-RedHat.yml
+  ansible.builtin.include_tasks: install-family-RedHat.yml
   when: ansible_os_family == 'RedHat' and ansible_distribution != 'RedHat'
 
 - name: Run generic code
-  include_tasks: install-generic.yml
+  ansible.builtin.include_tasks: install-generic.yml
