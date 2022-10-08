@@ -6,6 +6,15 @@
 Installs and activates EPEL on a variety of RedHat flavors 
 
 
+
+## Dependencies
+
+#### Roles
+None
+
+#### Collections
+- community.general
+
 ## Platforms
 
 Supported platforms
@@ -43,7 +52,7 @@ epel_state: enabled
 # EPEL mode 'public'
 # ----------------------------------------------------------------
 
-# EPEL mode 
+# EPEL mode
 epel_mode: public
 
 # EPEL rpm url
@@ -60,7 +69,7 @@ epel_gpgkey_file: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_majo
 # EPEL mode 'private'
 # ----------------------------------------------------------------
 
-# EPEL mode 
+# EPEL mode
 # epel_mode: private
 
 # EPEL repo name
@@ -72,6 +81,7 @@ epel_repo_description: epel
 # EPEL repository url
 # epel_repo_url: https://www.example.com/epel
 </pre></code>
+
 
 ### vars/RedHat-8.yml
 <pre><code>
@@ -148,6 +158,6 @@ epel_packages:
   become: "{{ molecule['converge']['become'] | default('yes') }}"
   tasks:
     - name: Include role 'epel'
-      include_role:
+      ansible.builtin.include_role:
         name: epel
 </pre></code>
