@@ -6,6 +6,15 @@
 Installs and activates EPEL on a variety of RedHat flavors 
 
 
+
+## Dependencies
+
+#### Roles
+None
+
+#### Collections
+- community.general
+
 ## Platforms
 
 Supported platforms
@@ -72,6 +81,7 @@ epel_repo_description: epel
 # EPEL repository url
 # epel_repo_url: https://www.example.com/epel
 </pre></code>
+
 
 ### vars/RedHat-8.yml
 <pre><code>
@@ -148,6 +158,6 @@ epel_packages:
   become: "{{ molecule['converge']['become'] | default('yes') }}"
   tasks:
     - name: Include role 'epel'
-      include_role:
+      ansible.builtin.include_role:
         name: epel
 </pre></code>
