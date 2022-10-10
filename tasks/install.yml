@@ -1,25 +1,8 @@
 ---
 
-- name: Create /etc/ansible/facts.d
-  ansible.builtin.file:
-    path: /etc/ansible/facts.d
-    state: directory
-    owner: root
-    group: root
-    mode: "0755"
-
-- name: Distribute repolist.fact
-  ansible.builtin.copy:
-    src: repolist.fact
-    dest: /etc/ansible/facts.d/repolist.fact
-    owner: root
-    group: root
-    mode: "0755"
-  register: _facts
-
-- name: Execute setup  # noqa no-handler
-  ansible.builtin.setup:
-  when: _facts.changed
+- name: Setup all required custom facts
+  ansible.builtin.include_role:
+    name: facts
 
 - name: Run code for 'RHEL'
   ansible.builtin.include_tasks: install-RedHat.yml

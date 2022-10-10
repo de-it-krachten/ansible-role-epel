@@ -10,7 +10,7 @@ Installs and activates EPEL on a variety of RedHat flavors
 ## Dependencies
 
 #### Roles
-None
+- facts
 
 #### Collections
 - community.general
