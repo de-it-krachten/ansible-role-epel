@@ -7,6 +7,12 @@ generic:
   role_description: |
     Installs and activates EPEL on a variety of RedHat flavors 
 
+# Dependencies
+dependencies:
+  roles:
+    - facts
+  collections: []
+
 # Supported platforms
 platforms:
   rhel7:
@@ -60,3 +66,8 @@ platforms:
   alpine3:
     ci: false
     supported: false
+
+molecule:
+  requirements:
+    roles_extra:
+      - facts
