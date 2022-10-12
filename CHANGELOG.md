@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.4.2...v1.5.0) (2022-10-12)
+
+
+### Bug Fixes
+
+* Move custom fact to 'ansible-role-facts' and set-up dependency ([087f55c](https://github.com/de-it-krachten/ansible-role-epel/commit/087f55c2dded386bd6f704515633a0a345119eff))
+
+
+### Features
+
+* Move to FQCN ([8b5e3d4](https://github.com/de-it-krachten/ansible-role-epel/commit/8b5e3d453f374ea9a4565f2544ae575b326348ca))
+* Update CI to latest standards ([4b2d6ab](https://github.com/de-it-krachten/ansible-role-epel/commit/4b2d6abb1d7c2e7a90d20207ae314d77913b0dc0))
+
 ## [1.4.2](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.4.1...v1.4.2) (2022-09-27)
 
 
