@@ -1,37 +1,36 @@
 ---
 
 - name: Test subscription status
-  command: subscription-manager status
+  ansible.builtin.command: subscription-manager status
   changed_when: no
   failed_when: no
   register: _sat_sub
   become: yes
 
 - name: Activate RHEL repositories from RHSM/Satellite
+  become: yes
+  when: _sat_sub.rc == 0
   block:
 
     - name: Get list of activated satellite repositories
-      command: subscription-manager repos --list-enabled
+      ansible.builtin.command: subscription-manager repos --list-enabled
       check_mode: no
       changed_when: no
       register: sat_enabled
 
     - name: Get list of disabled satellite repositories
-      command: subscription-manager repos --list-disabled
+      ansible.builtin.command: subscription-manager repos --list-disabled
       check_mode: no
       changed_when: no
       register: sat_disabled
 
     - name: Enable satellite repositories
-      command: subscription-manager repos --enable {{ item }}
+      ansible.builtin.command: subscription-manager repos --enable {{ item }}
       failed_when: no
       loop: "{{ epel_satellite_repositories_default }}"
       when: item in sat_disabled.stdout
 
     - name: Disable epel repository from satellite
-      command: subscription-manager repos --disable {{ item }}
+      ansible.builtin.command: subscription-manager repos --disable {{ item }}
       loop: "{{ epel_satellite_repositories_epel }}"
       when: item in sat_enabled.stdout
-
-  become: yes
-  when: _sat_sub.rc == 0

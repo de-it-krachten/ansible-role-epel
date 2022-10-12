@@ -14,7 +14,7 @@ epel_state: enabled
 # EPEL mode 'public'
 # ----------------------------------------------------------------
 
-# EPEL mode 
+# EPEL mode
 epel_mode: public
 
 # EPEL rpm url
@@ -31,7 +31,7 @@ epel_gpgkey_file: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_majo
 # EPEL mode 'private'
 # ----------------------------------------------------------------
 
-# EPEL mode 
+# EPEL mode
 # epel_mode: private
 
 # EPEL repo name
