@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.5.0...v1.6.0) (2023-01-12)
+
+
+### Features
+
+* Update CI/README/Platforms ([2121f71](https://github.com/de-it-krachten/ansible-role-epel/commit/2121f71eacd6a4b48e13e73d258b2ba0a0bdde3c))
+
 # [1.5.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.4.2...v1.5.0) (2022-10-12)
 
 
