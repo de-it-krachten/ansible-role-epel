@@ -10,7 +10,7 @@ Installs and activates EPEL on a variety of RedHat flavors
 ## Dependencies
 
 #### Roles
-- facts
+- deitkrachten.facts
 
 #### Collections
 - community.general
@@ -29,6 +29,7 @@ Supported platforms
 - RockyLinux 8
 - RockyLinux 9
 - OracleLinux 8
+- OracleLinux 9
 - AlmaLinux 8
 - AlmaLinux 9
 
@@ -155,7 +156,7 @@ epel_packages:
 <pre><code>
 - name: sample playbook for role 'epel'
   hosts: all
-  become: "{{ molecule['converge']['become'] | default('yes') }}"
+  become: "yes"
   tasks:
     - name: Include role 'epel'
       ansible.builtin.include_role:

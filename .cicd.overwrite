@@ -10,7 +10,7 @@ generic:
 # Dependencies
 dependencies:
   roles:
-    - facts
+    - deitkrachten.facts
   collections: []
 
 # Supported platforms
@@ -69,5 +69,4 @@ platforms:
 
 molecule:
   requirements:
-    roles_extra:
-      - facts
+    roles_extra: []
