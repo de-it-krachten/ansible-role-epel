@@ -26,11 +26,12 @@
 
     - name: Enable satellite repositories
       ansible.builtin.command: subscription-manager repos --enable {{ item }}
-      failed_when: no
+      changed_when: yes
       loop: "{{ epel_satellite_repositories_default }}"
       when: item in sat_disabled.stdout
 
     - name: Disable epel repository from satellite
       ansible.builtin.command: subscription-manager repos --disable {{ item }}
+      changed_when: yes
       loop: "{{ epel_satellite_repositories_epel }}"
       when: item in sat_enabled.stdout
