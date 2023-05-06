@@ -91,42 +91,6 @@ epel_satellite_repositories_default:
   - codeready-builder-for-rhel-8-x86_64-rpms
 </pre></code>
 
-### vars/CentOS-Stream-8.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-  - epel-next-release
-</pre></code>
-
-### vars/default.yml
-<pre><code>
-
-</pre></code>
-
-### vars/CentOS-8.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-</pre></code>
-
-### vars/RedHat-9.yml
-<pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - codeready-builder-for-rhel-9-x86_64-rpms
-</pre></code>
-
-### vars/RedHat-7.yml
-<pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - rhel-7-server-extras-rpms
-  - rhel-7-server-optional-rpms
-  - rhel-ha-for-rhel-7-server-rpms
-</pre></code>
-
 ### vars/OracleLinux.yml
 <pre><code>
 # OracleLinux RPM
@@ -134,7 +98,7 @@ epel_packages:
   - oracle-epel-release-el{{ ansible_distribution_major_version }}
 </pre></code>
 
-### vars/CentOS-7.yml
+### vars/CentOS-8.yml
 <pre><code>
 # List of EPEL packages
 epel_packages:
@@ -147,6 +111,42 @@ epel_packages:
 epel_packages:
   - epel-release
   - epel-next-release
+</pre></code>
+
+### vars/RedHat-9.yml
+<pre><code>
+# List of satellite repositories to enable
+epel_satellite_repositories_default:
+  - codeready-builder-for-rhel-9-x86_64-rpms
+</pre></code>
+
+### vars/CentOS-Stream-8.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+  - epel-next-release
+</pre></code>
+
+### vars/RedHat-7.yml
+<pre><code>
+# List of satellite repositories to enable
+epel_satellite_repositories_default:
+  - rhel-7-server-extras-rpms
+  - rhel-7-server-optional-rpms
+  - rhel-ha-for-rhel-7-server-rpms
+</pre></code>
+
+### vars/CentOS-7.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+</pre></code>
+
+### vars/default.yml
+<pre><code>
+
 </pre></code>
 
 

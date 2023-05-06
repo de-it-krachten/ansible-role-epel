@@ -3,9 +3,11 @@
 - name: Activate powertools repository
   ansible.builtin.command: dnf config-manager --set-enabled powertools
   become: yes
+  changed_when: true
   when: "'powertools' in ansible_local['repolist']['disabled']"
 
 - name: Activate crb repository
   ansible.builtin.command: dnf config-manager --set-enabled crb
   become: yes
+  changed_when: true
   when: "'crb' in ansible_local['repolist']['disabled']"
