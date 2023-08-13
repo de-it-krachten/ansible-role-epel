@@ -32,6 +32,7 @@ Supported platforms
 - OracleLinux 9
 - AlmaLinux 8
 - AlmaLinux 9
+- SUSE Linux Enterprise 15<sup>1</sup>
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
