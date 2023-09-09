@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.7.0...v1.7.1) (2023-09-09)
+
+
+### Bug Fixes
+
+* Move OS specific variables vars->defaults ([82b9f0b](https://github.com/de-it-krachten/ansible-role-epel/commit/82b9f0b313402e30f222c0f826df09148d05ea35))
+
 # [1.7.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.6.0...v1.7.0) (2023-08-30)
 
 
