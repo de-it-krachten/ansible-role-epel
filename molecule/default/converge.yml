@@ -3,6 +3,8 @@
 - name: Converge
   hosts: all
   become: "yes"
+  roles:
+    - deitkrachten.facts
   tasks:
     - name: Include role 'ansible-role-epel'
       ansible.builtin.include_role:

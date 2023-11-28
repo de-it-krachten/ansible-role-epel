@@ -1,5 +1,12 @@
 ---
 
+- name: Ensure role 'deitkrachten.facts' was already executed
+  ansible.builtin.fail:
+    msg:
+      - "This role depends on role 'deitkrachten.facts'"
+      - "It should be run before this role"
+  when: role_facts_executed is undefined
+
 - name: Load variables based on OS type
   ansible.builtin.include_tasks: vars.yml
 
