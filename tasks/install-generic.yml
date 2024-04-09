@@ -79,6 +79,6 @@
         name: "{{ epel_repo_name }}"
         description: "{{ epel_repo_description }}"
         baseurl: "{{ epel_repo_url }}"
-        enabled: yes
+        enabled: "{{ 'yes' if epel_state == 'enabled' else 'no' }}"
         gpgkey: file://{{ epel_gpgkey_file }}
         gpgcheck: yes

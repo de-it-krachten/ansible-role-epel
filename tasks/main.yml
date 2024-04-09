@@ -12,10 +12,3 @@
 
 - name: Setup EPEL
   ansible.builtin.include_tasks: install.yml
-  when: epel_state == 'enabled'
-
-- name: Disable EPEL
-  ansible.builtin.yum_repository:
-    name: "{{ epel_repo_name }}"
-    enabled: false
-  when: epel_state == 'disabled'
