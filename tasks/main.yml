@@ -15,7 +15,7 @@
   when: epel_state == 'enabled'
 
 - name: Disable EPEL
-  ansible.builtin.package:
-    name: epel-release
-    state: absent
+  ansible.builtin.yum_repository:
+    name: "{{ epel_repo_name }}"
+    enabled: false
   when: epel_state == 'disabled'
