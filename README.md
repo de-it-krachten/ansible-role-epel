@@ -84,28 +84,28 @@ epel_repo_description: epel
 # epel_repo_url: https://www.example.com/epel
 </pre></code>
 
-### defaults/RedHat-8.yml
+### defaults/default.yml
 <pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - codeready-builder-for-rhel-8-x86_64-rpms
+
 </pre></code>
 
-### defaults/OracleLinux.yml
-<pre><code>
-# OracleLinux RPM
-epel_packages:
-  - oracle-epel-release-el{{ ansible_distribution_major_version }}
-</pre></code>
-
-### defaults/CentOS-8.yml
+### defaults/CentOS-7.yml
 <pre><code>
 # List of EPEL packages
 epel_packages:
   - epel-release
 </pre></code>
 
-### defaults/CentOS-Stream-9.yml
+### defaults/RedHat-7.yml
+<pre><code>
+# List of satellite repositories to enable
+epel_satellite_repositories_default:
+  - rhel-7-server-extras-rpms
+  - rhel-7-server-optional-rpms
+  - rhel-ha-for-rhel-7-server-rpms
+</pre></code>
+
+### defaults/CentOS-Stream-8.yml
 <pre><code>
 # List of EPEL packages
 epel_packages:
@@ -120,7 +120,7 @@ epel_satellite_repositories_default:
   - codeready-builder-for-rhel-9-x86_64-rpms
 </pre></code>
 
-### defaults/CentOS-Stream-8.yml
+### defaults/CentOS-Stream-9.yml
 <pre><code>
 # List of EPEL packages
 epel_packages:
@@ -128,25 +128,25 @@ epel_packages:
   - epel-next-release
 </pre></code>
 
-### defaults/RedHat-7.yml
-<pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - rhel-7-server-extras-rpms
-  - rhel-7-server-optional-rpms
-  - rhel-ha-for-rhel-7-server-rpms
-</pre></code>
-
-### defaults/CentOS-7.yml
+### defaults/CentOS-8.yml
 <pre><code>
 # List of EPEL packages
 epel_packages:
   - epel-release
 </pre></code>
 
-### defaults/default.yml
+### defaults/OracleLinux.yml
 <pre><code>
+# OracleLinux RPM
+epel_packages:
+  - oracle-epel-release-el{{ ansible_distribution_major_version }}
+</pre></code>
 
+### defaults/RedHat-8.yml
+<pre><code>
+# List of satellite repositories to enable
+epel_satellite_repositories_default:
+  - codeready-builder-for-rhel-8-x86_64-rpms
 </pre></code>
 
 
