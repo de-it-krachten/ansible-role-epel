@@ -12,10 +12,3 @@
 
 - name: Setup EPEL
   ansible.builtin.include_tasks: install.yml
-  when: epel_state == 'enabled'
-
-- name: Disable EPEL
-  ansible.builtin.package:
-    name: epel-release
-    state: absent
-  when: epel_state == 'disabled'
