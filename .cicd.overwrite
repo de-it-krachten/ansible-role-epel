@@ -75,4 +75,8 @@ platforms:
 
 molecule:
   requirements:
-    roles_extra: []
+    roles_extra:
+      - deitkrachten.facts
+  converge:
+    roles:
+      - deitkrachten.facts

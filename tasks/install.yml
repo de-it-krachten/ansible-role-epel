@@ -1,9 +1,5 @@
 ---
 
-- name: Setup all required custom facts
-  ansible.builtin.include_role:
-    name: deitkrachten.facts
-
 - name: Run code for 'RHEL'
   ansible.builtin.include_tasks: install-RedHat.yml
   when: ansible_distribution == 'RedHat'

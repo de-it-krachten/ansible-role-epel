@@ -13,7 +13,7 @@ Installs and activates EPEL on a variety of RedHat flavors
 - deitkrachten.facts
 
 #### Collections
-- community.general
+None
 
 ## Platforms
 
@@ -84,52 +84,19 @@ epel_repo_description: epel
 # epel_repo_url: https://www.example.com/epel
 </pre></code>
 
-
-### vars/RedHat-8.yml
+### defaults/default.yml
 <pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - codeready-builder-for-rhel-8-x86_64-rpms
+
 </pre></code>
 
-### vars/OracleLinux.yml
-<pre><code>
-# OracleLinux RPM
-epel_packages:
-  - oracle-epel-release-el{{ ansible_distribution_major_version }}
-</pre></code>
-
-### vars/CentOS-8.yml
+### defaults/CentOS-7.yml
 <pre><code>
 # List of EPEL packages
 epel_packages:
   - epel-release
 </pre></code>
 
-### vars/CentOS-Stream-9.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-  - epel-next-release
-</pre></code>
-
-### vars/RedHat-9.yml
-<pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - codeready-builder-for-rhel-9-x86_64-rpms
-</pre></code>
-
-### vars/CentOS-Stream-8.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-  - epel-next-release
-</pre></code>
-
-### vars/RedHat-7.yml
+### defaults/RedHat-7.yml
 <pre><code>
 # List of satellite repositories to enable
 epel_satellite_repositories_default:
@@ -138,17 +105,50 @@ epel_satellite_repositories_default:
   - rhel-ha-for-rhel-7-server-rpms
 </pre></code>
 
-### vars/CentOS-7.yml
+### defaults/CentOS-Stream-8.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+  - epel-next-release
+</pre></code>
+
+### defaults/RedHat-9.yml
+<pre><code>
+# List of satellite repositories to enable
+epel_satellite_repositories_default:
+  - codeready-builder-for-rhel-9-x86_64-rpms
+</pre></code>
+
+### defaults/CentOS-Stream-9.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+  - epel-next-release
+</pre></code>
+
+### defaults/CentOS-8.yml
 <pre><code>
 # List of EPEL packages
 epel_packages:
   - epel-release
 </pre></code>
 
-### vars/default.yml
+### defaults/OracleLinux.yml
 <pre><code>
-
+# OracleLinux RPM
+epel_packages:
+  - oracle-epel-release-el{{ ansible_distribution_major_version }}
 </pre></code>
+
+### defaults/RedHat-8.yml
+<pre><code>
+# List of satellite repositories to enable
+epel_satellite_repositories_default:
+  - codeready-builder-for-rhel-8-x86_64-rpms
+</pre></code>
+
 
 
 
@@ -157,7 +157,9 @@ epel_packages:
 <pre><code>
 - name: sample playbook for role 'epel'
   hosts: all
-  become: "yes"
+  become: 'yes'
+  roles:
+    - deitkrachten.facts
   tasks:
     - name: Include role 'epel'
       ansible.builtin.include_role:
