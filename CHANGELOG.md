@@ -1,3 +1,12 @@
+## [1.7.2](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.7.1...v1.7.2) (2024-04-10)
+
+
+### Bug Fixes
+
+* Add method of disabling repo ([c55bc6f](https://github.com/de-it-krachten/ansible-role-epel/commit/c55bc6fae0f8030150641e82365361b2bcb9a528))
+* Make it possible to disable EPEL ([13daf2e](https://github.com/de-it-krachten/ansible-role-epel/commit/13daf2edfc581cc9a4eaf689423217155f0bbf86))
+* Remove execution of external role 'facts' ([7a31726](https://github.com/de-it-krachten/ansible-role-epel/commit/7a31726cc9e722d135ac57791f4f8144f094b1a7))
+
 ## [1.7.1](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.7.0...v1.7.1) (2023-09-09)
 
 
