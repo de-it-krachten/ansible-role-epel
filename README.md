@@ -33,6 +33,7 @@ Supported platforms
 - AlmaLinux 8
 - AlmaLinux 9
 - SUSE Linux Enterprise 15<sup>1</sup>
+- Ubuntu 24.04 LTS
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
@@ -84,16 +85,46 @@ epel_repo_description: epel
 # epel_repo_url: https://www.example.com/epel
 </pre></code>
 
-### defaults/default.yml
-<pre><code>
-
-</pre></code>
-
 ### defaults/CentOS-7.yml
 <pre><code>
 # List of EPEL packages
 epel_packages:
   - epel-release
+</pre></code>
+
+### defaults/CentOS-8.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+</pre></code>
+
+### defaults/CentOS-Stream-8.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+  - epel-next-release
+</pre></code>
+
+### defaults/CentOS-Stream-9.yml
+<pre><code>
+# List of EPEL packages
+epel_packages:
+  - epel-release
+  - epel-next-release
+</pre></code>
+
+### defaults/default.yml
+<pre><code>
+
+</pre></code>
+
+### defaults/OracleLinux.yml
+<pre><code>
+# OracleLinux RPM
+epel_packages:
+  - oracle-epel-release-el{{ ansible_distribution_major_version }}
 </pre></code>
 
 ### defaults/RedHat-7.yml
@@ -105,12 +136,11 @@ epel_satellite_repositories_default:
   - rhel-ha-for-rhel-7-server-rpms
 </pre></code>
 
-### defaults/CentOS-Stream-8.yml
+### defaults/RedHat-8.yml
 <pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-  - epel-next-release
+# List of satellite repositories to enable
+epel_satellite_repositories_default:
+  - codeready-builder-for-rhel-8-x86_64-rpms
 </pre></code>
 
 ### defaults/RedHat-9.yml
@@ -118,35 +148,6 @@ epel_packages:
 # List of satellite repositories to enable
 epel_satellite_repositories_default:
   - codeready-builder-for-rhel-9-x86_64-rpms
-</pre></code>
-
-### defaults/CentOS-Stream-9.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-  - epel-next-release
-</pre></code>
-
-### defaults/CentOS-8.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-</pre></code>
-
-### defaults/OracleLinux.yml
-<pre><code>
-# OracleLinux RPM
-epel_packages:
-  - oracle-epel-release-el{{ ansible_distribution_major_version }}
-</pre></code>
-
-### defaults/RedHat-8.yml
-<pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - codeready-builder-for-rhel-8-x86_64-rpms
 </pre></code>
 
 
