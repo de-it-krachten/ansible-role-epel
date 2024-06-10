@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.7.2...v1.8.0) (2024-06-10)
+
+
+### Features
+
+* Add support for Ubuntu 24.04 LTS + Fedora 40 ([1561ccb](https://github.com/de-it-krachten/ansible-role-epel/commit/1561ccbd2960e3f6fd4cb70c4e7b1c1327d649ac))
+
 ## [1.7.2](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.7.1...v1.7.2) (2024-04-10)
 
 
