@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.8.0...v1.9.0) (2024-12-29)
+
+
+### Features
+
+* Update supported platforms & CI ([107f680](https://github.com/de-it-krachten/ansible-role-epel/commit/107f680363e33a2960f4cd58d308810327fbc67f))
+
 # [1.8.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.7.2...v1.8.0) (2024-06-10)
 
 
