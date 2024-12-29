@@ -19,12 +19,8 @@ None
 
 Supported platforms
 
-- Red Hat Enterprise Linux 7
 - Red Hat Enterprise Linux 8
 - Red Hat Enterprise Linux 9
-- CentOS 7
-- CentOS 8
-- CentOS Stream 8
 - CentOS Stream 9
 - RockyLinux 8
 - RockyLinux 9
@@ -32,7 +28,6 @@ Supported platforms
 - OracleLinux 9
 - AlmaLinux 8
 - AlmaLinux 9
-- SUSE Linux Enterprise 15<sup>1</sup>
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms

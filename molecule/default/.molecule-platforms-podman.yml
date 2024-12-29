@@ -1,7 +1,7 @@
 ---
 
 - name: rhel7
-  ci: true
+  ci: false
   image: registry.access.redhat.com/ubi7/ubi-init:latest
   pre_build_image: false
 - name: rhel8
@@ -13,15 +13,15 @@
   image: registry.access.redhat.com/ubi9/ubi-init:latest
   pre_build_image: false
 - name: centos7
-  ci: true
+  ci: false
   image: docker.io/geerlingguy/docker-centos7-ansible:latest
   privileged: false
   pre_build_image: true
 - name: centos8
-  ci: true
+  ci: false
   image: docker.io/geerlingguy/docker-centos8-ansible:latest
 - name: centos8s
-  ci: true
+  ci: false
   image: docker.io/dropveter/centos8s-ansible:latest
 - name: centos9s
   ci: true
@@ -91,6 +91,9 @@
 - name: fedora40
   ci: false
   image: docker.io/geerlingguy/docker-fedora40-ansible:latest
+- name: fedora41
+  ci: false
+  image: docker.io/geerlingguy/docker-fedora41-ansible:latest
 - name: alpine3
   ci: false
   image: docker.io/dropveter/alpine-python3

@@ -16,8 +16,8 @@ dependencies:
 # Supported platforms
 platforms:
   rhel7:
-    ci: true
-    supported: true
+    ci: false
+    supported: false
   rhel8:
     ci: true
     supported: true
@@ -25,14 +25,14 @@ platforms:
     ci: true
     supported: true
   centos7:
-    ci: true
-    supported: true
+    ci: false
+    supported: false
   centos8:
-    ci: true
-    supported: true
+    ci: false
+    supported: false
   centos8s:
-    ci: true
-    supported: true
+    ci: false
+    supported: false
   centos9s:
     ci: true
     supported: true
@@ -42,6 +42,9 @@ platforms:
   rockylinux9:
     ci: true
     supported: true
+  sles15:
+    ci: false
+    supported: false
   opensuse15:
     ci: false
     supported: false
@@ -66,10 +69,10 @@ platforms:
   ubuntu2404:
     ci: false
     supported: false
-  fedora39:
+  fedora40:
     ci: false
     supported: false
-  fedora40:
+  fedora41:
     ci: false
     supported: false
   alpine3:
