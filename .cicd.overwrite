@@ -24,6 +24,9 @@ platforms:
   rhel9:
     ci: true
     supported: true
+  rhel10:
+    ci: true
+    supported: true
   centos7:
     ci: false
     supported: false
@@ -33,6 +36,9 @@ platforms:
   centos8s:
     ci: false
     supported: false
+  centos10s:
+    ci: true
+    supported: true
   centos9s:
     ci: true
     supported: true
@@ -40,6 +46,9 @@ platforms:
     ci: true
     supported: true
   rockylinux9:
+    ci: true
+    supported: true
+  rockylinux10:
     ci: true
     supported: true
   sles15:
@@ -57,6 +66,9 @@ platforms:
   debian12:
     ci: false
     supported: false
+  debian13:
+    ci: false
+    supported: false
   ubuntu1804:
     ci: false
     supported: false
@@ -69,10 +81,10 @@ platforms:
   ubuntu2404:
     ci: false
     supported: false
-  fedora40:
+  fedora41:
     ci: false
     supported: false
-  fedora41:
+  fedora42:
     ci: false
     supported: false
   alpine3:

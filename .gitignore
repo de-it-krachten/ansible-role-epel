@@ -2,3 +2,5 @@
 *.bak
 .converted
 defaults/defaults-*
+/.ansible/
+
