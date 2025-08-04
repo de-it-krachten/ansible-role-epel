@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.9.0...v1.9.1) (2025-08-04)
+
+
+### Bug Fixes
+
+* Delete unwanted '.ansible' files making 'ansible-galaxy' fail ([9df5a6d](https://github.com/de-it-krachten/ansible-role-epel/commit/9df5a6d4b3e6d2df1b8fe5d9e7eb5bde1a030fb8))
+
 # [1.9.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.8.0...v1.9.0) (2024-12-29)
 
 
