@@ -22,6 +22,10 @@
     owner: root
     group: root
     mode: "0644"
+  register: __rpm_key
+  retries: 5
+  delay: 15
+  until: not __rpm_key.failed
   environment:
     https_proxy: "{{ _epel_https_proxy }}"
     http_proxy: "{{ _epel_http_proxy }}"
@@ -47,6 +51,10 @@
         owner: root
         group: root
         mode: "0644"
+      register: __rpm_package
+      retries: 5
+      delay: 15
+      until: not __rpm_package.failed
       environment:
         https_proxy: "{{ epel_https_proxy | default(https_proxy) | default('') }}"
         http_proxy: "{{ epel_http_proxy | default(http_proxy) | default('') }}"
