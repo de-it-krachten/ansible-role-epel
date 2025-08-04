@@ -21,13 +21,18 @@ Supported platforms
 
 - Red Hat Enterprise Linux 8
 - Red Hat Enterprise Linux 9
+- Red Hat Enterprise Linux 10
 - CentOS Stream 9
+- CentOS Stream 10
 - RockyLinux 8
 - RockyLinux 9
+- RockyLinux 10
 - OracleLinux 8
 - OracleLinux 9
+- OracleLinux 10
 - AlmaLinux 8
 - AlmaLinux 9
+- AlmaLinux 10
 
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
