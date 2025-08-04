@@ -61,7 +61,7 @@
         no_proxy: "{{ epel_no_proxy | default(no_proxy) | default('') }}"
 
     - name: Install RPM package
-      ansible.builtin.yum:
+      ansible.builtin.dnf:
         name: "/tmp/{{ epel_rpm_package | basename }}"
         state: present
 
@@ -73,7 +73,7 @@
   block:
 
     - name: Install RPM package
-      ansible.builtin.yum:
+      ansible.builtin.dnf:
         name: "{{ epel_packages }}"
         state: present
 
