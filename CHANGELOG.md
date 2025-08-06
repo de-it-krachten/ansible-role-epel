@@ -1,3 +1,14 @@
+# [1.10.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.9.1...v1.10.0) (2025-08-06)
+
+
+### Features
+
+* Add support for AlmaLinux 10 ([f1c0ee3](https://github.com/de-it-krachten/ansible-role-epel/commit/f1c0ee33bfc2210536e90397e838120c80ec042f))
+* Add support for CentOS Stream 10 ([a479ce5](https://github.com/de-it-krachten/ansible-role-epel/commit/a479ce503724f4259de10ce2b53c154dd6c51107))
+* Add support for OracleLinux 10 ([8269bed](https://github.com/de-it-krachten/ansible-role-epel/commit/8269bedea5071de37a8203e7ab6aa3a966d2bee1))
+* Add support for Red Hat Enterprise Linux 10 ([dc35727](https://github.com/de-it-krachten/ansible-role-epel/commit/dc35727846caa87b8b53c28c44c1301eff6c9f3b))
+* Add support for RockyLinux 10 ([95313d3](https://github.com/de-it-krachten/ansible-role-epel/commit/95313d367d9eaf3af80da024bb07484b4734a6cb))
+
 ## [1.9.1](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.9.0...v1.9.1) (2025-08-04)
 
 
