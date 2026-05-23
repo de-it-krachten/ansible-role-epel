@@ -2,11 +2,11 @@
 
 - name: Run code for 'RHEL'
   ansible.builtin.include_tasks: install-RedHat.yml
-  when: ansible_distribution == 'RedHat'
+  when: ansible_facts.distribution == 'RedHat'
 
 - name: Run code for RHEL compatibles
   ansible.builtin.include_tasks: install-family-RedHat.yml
-  when: ansible_os_family == 'RedHat' and ansible_distribution != 'RedHat'
+  when: ansible_facts.os_family == 'RedHat' and ansible_facts.distribution != 'RedHat'
 
 - name: Run generic code
   ansible.builtin.include_tasks: install-generic.yml
