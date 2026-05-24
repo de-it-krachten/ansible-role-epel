@@ -13,7 +13,7 @@ Installs and activates EPEL on a variety of RedHat flavors
 - deitkrachten.facts
 
 #### Collections
-- https://github.com/de-it-krachten/ansible-collection-utils.git
+None
 
 ## Platforms
 
@@ -41,15 +41,8 @@ Note:
 ## Role Variables
 ### defaults/main.yml
 <pre><code>
-# list of default satellite repostories to enable
-epel_satellite_repositories_default: []
-
-# list of epel satellite repostories to disable
-epel_satellite_repositories_epel: []
-
 # Mode to operate in
 epel_state: enabled
-
 
 # ----------------------------------------------------------------
 # EPEL mode 'public'
@@ -83,71 +76,58 @@ epel_repo_description: epel
 
 # EPEL repository url
 # epel_repo_url: https://www.example.com/epel
-</pre></code>
 
-### defaults/CentOS-7.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-</pre></code>
+# ----------------------------------------------------------------
+# OS Specific defaults
+# ----------------------------------------------------------------
 
-### defaults/CentOS-8.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-</pre></code>
+# OS-oriented defaults
+__epel_os_defaults:
+  default:
+    epel_packages:
+      - epel-release
+    epel_satellite_repositories_default: []
+    epel_satellite_repositories_epel: []
+  'RedHat':
+    epel_packages: []
+  'RedHat-7':
+    # List of satellite repositories to enable
+    epel_satellite_repositories_default:
+      - rhel-7-server-extras-rpms
+      - rhel-7-server-optional-rpms
+      - rhel-ha-for-rhel-7-server-rpms
+  'RedHat-8':
+    # List of satellite repositories to enable
+    epel_satellite_repositories_default:
+      - codeready-builder-for-rhel-8-x86_64-rpms
+  'RedHat-9':
+    # List of satellite repositories to enable
+    epel_satellite_repositories_default:
+      - codeready-builder-for-rhel-9-x86_64-rpms
+  'RedHat-10':
+    # List of satellite repositories to enable
+    epel_satellite_repositories_default:
+      - codeready-builder-for-rhel-10-x86_64-rpms
 
-### defaults/CentOS-Stream-8.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-  - epel-next-release
-</pre></code>
+# OS key helpers
+__epel_distro: "{{ ansible_facts.distribution }}"
+__epel_os_family: "{{ ansible_facts.os_family }}"
+__epel_distro_version: "{{ __epel_distro }}-{{ ansible_facts.distribution_major_version }}"
+__epel_os_version: "{{ __epel_os_family }}-{{ ansible_facts.distribution_major_version }}"
 
-### defaults/CentOS-Stream-9.yml
-<pre><code>
-# List of EPEL packages
-epel_packages:
-  - epel-release
-  - epel-next-release
-</pre></code>
+# Construct defaults in the corrct order
+__epel_os: >-
+  {{
+    __epel_os_defaults['default'] | default({}) |
+    combine(__epel_os_defaults['family-'+__epel_os_family] | default({})) |
+    combine(__epel_os_defaults['family-'+__epel_os_version] | default({})) |
+    combine(__epel_os_defaults[__epel_distro] | default({})) |
+    combine(__epel_os_defaults[__epel_distro_version] | default({}))
+  }}
 
-### defaults/default.yml
-<pre><code>
-
-</pre></code>
-
-### defaults/OracleLinux.yml
-<pre><code>
-# OracleLinux RPM
-epel_packages:
-  - oracle-epel-release-el{{ ansible_facts.distribution_major_version }}
-</pre></code>
-
-### defaults/RedHat-7.yml
-<pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - rhel-7-server-extras-rpms
-  - rhel-7-server-optional-rpms
-  - rhel-ha-for-rhel-7-server-rpms
-</pre></code>
-
-### defaults/RedHat-8.yml
-<pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - codeready-builder-for-rhel-8-x86_64-rpms
-</pre></code>
-
-### defaults/RedHat-9.yml
-<pre><code>
-# List of satellite repositories to enable
-epel_satellite_repositories_default:
-  - codeready-builder-for-rhel-9-x86_64-rpms
+# Public variables — all lazy, all overridable
+epel_packages: "{{ __epel_os.epel_packages }}"
+epel_satellite_repositories_default: "{{ __epel_os.epel_satellite_repositories_default }}"
 </pre></code>
 
 
@@ -165,4 +145,7 @@ epel_satellite_repositories_default:
     - name: Include role 'epel'
       ansible.builtin.include_role:
         name: epel
+- name: sample playbook for role 'epel' post playbook
+  ansible.builtin.import_playbook: converge-post.yml
+  when: molecule_converge_post is undefined or molecule_converge_post | bool
 </pre></code>

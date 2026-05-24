@@ -7,8 +7,5 @@
       - "It should be run before this role"
   when: role_facts_executed is undefined
 
-- name: Load variables based on OS type
-  ansible.builtin.include_tasks: vars.yml
-
 - name: Setup EPEL
   ansible.builtin.include_tasks: install.yml

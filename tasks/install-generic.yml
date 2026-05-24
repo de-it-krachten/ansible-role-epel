@@ -35,7 +35,7 @@
   become: yes
   when:
     - epel_mode == 'public'
-    - epel_packages is undefined or epel_packages|length == 0
+    - epel_packages is undefined or epel_packages | length == 0
   block:
 
     - name: Import RPM signing key
@@ -69,7 +69,7 @@
   become: yes
   when:
     - epel_mode == 'public'
-    - epel_packages is defined and epel_packages|length > 0
+    - epel_packages is defined and epel_packages | length > 0
   block:
 
     - name: Install RPM package

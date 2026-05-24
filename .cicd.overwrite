@@ -65,3 +65,4 @@ molecule:
   converge:
     roles:
       - deitkrachten.facts
+    post: converge-post.yml

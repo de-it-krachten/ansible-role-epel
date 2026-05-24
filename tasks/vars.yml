@@ -29,9 +29,38 @@
     loop_var: var
   when: var in var_list
 
+- name: Create list of variables to skip
+  ansible.builtin.set_fact:
+    __vars_skip:
+      - vars
+      - play_hosts
+      - __vars_skip
+
+- name: Get all variables as a real dictionary
+  ansible.builtin.set_fact:
+    __vars: >-
+      {{
+        dict(
+          query('varnames', '.*')
+          | difference(__vars_skip)
+          | list
+          | zip(
+            query('vars',
+              *(
+                query('varnames', '.*')
+                | difference(__vars_skip)
+                | list
+              )
+            )
+          )
+        )
+      }}
+
 - name: Set variable if not already defined or value is the default  # noqa var-naming
   ansible.builtin.set_fact:
-    "{{ var.key }}": "{{ var.value | deitkrachten.utils.render_jinja(__platform_vars) }}"
+    "{{ var.key }}": "{{ var.value | deitkrachten.utils.render_jinja(__vars) | from_yaml }}"
+  vars:
+    __vars: "{{ lookup('vars', *lookup('varnames', '.*')) }}"
   when: >-
     (lookup('vars', var.key) is not defined) or
     (__defaults_vars[var.key] is defined and lookup('vars', var.key) == __defaults_vars[var.key])

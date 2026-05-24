@@ -1,0 +1,11 @@
+---
+
+- name: Converge - post
+  hosts: all
+  become: "yes"
+  tasks:
+
+    - name: Install ncdu
+      ansible.builtin.dnf:
+        name: ncdu
+        state: present

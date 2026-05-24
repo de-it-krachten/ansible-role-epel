@@ -1,5 +1,0 @@
----
-
-# OracleLinux RPM
-epel_packages:
-  - oracle-epel-release-el{{ ansible_facts.distribution_major_version }}
