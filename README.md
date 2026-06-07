@@ -37,6 +37,7 @@ Supported platforms
 Note:
 <sup>1</sup> : no automated testing is performed on these platforms
 
+
 ## Role Variables
 ### defaults/main.yml
 <pre><code>
@@ -58,13 +59,13 @@ epel_state: enabled
 epel_mode: public
 
 # EPEL rpm url
-epel_rpm_package: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm
+epel_rpm_package: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_facts.distribution_major_version }}.noarch.rpm
 
 # EPEL GPG download location
-epel_gpgkey_url: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+epel_gpgkey_url: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_facts.distribution_major_version }}
 
 # Location of GPG key on disk
-epel_gpgkey_file: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}
+epel_gpgkey_file: /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-{{ ansible_facts.distribution_major_version }}
 
 
 # ----------------------------------------------------------------
@@ -123,7 +124,7 @@ epel_packages:
 <pre><code>
 # OracleLinux RPM
 epel_packages:
-  - oracle-epel-release-el{{ ansible_distribution_major_version }}
+  - oracle-epel-release-el{{ ansible_facts.distribution_major_version }}
 </pre></code>
 
 ### defaults/RedHat-7.yml
