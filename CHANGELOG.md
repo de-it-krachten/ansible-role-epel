@@ -1,3 +1,15 @@
+# [1.11.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.10.0...v1.11.0) (2026-06-07)
+
+
+### Bug Fixes
+
+* Standarize vars.yml ([6da6249](https://github.com/de-it-krachten/ansible-role-epel/commit/6da62493991159d1c28810d5aaf0e4cebe0738a0))
+
+
+### Features
+
+* Add support for ansible 2.20 ([2a87e03](https://github.com/de-it-krachten/ansible-role-epel/commit/2a87e03821dcd7f1b5f62bb6db7238f8a8c7e54f))
+
 # [1.10.0](https://github.com/de-it-krachten/ansible-role-epel/compare/v1.9.1...v1.10.0) (2025-08-06)
 
 
