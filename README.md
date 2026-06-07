@@ -13,7 +13,7 @@ Installs and activates EPEL on a variety of RedHat flavors
 - deitkrachten.facts
 
 #### Collections
-- https://github.com/de-it-krachten/ansible-collection-utils.git
+None
 
 ## Platforms
 

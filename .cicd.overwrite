@@ -42,9 +42,6 @@ platforms:
   ubuntu2604:
     supported: false
     ci: false
-  fedora42:
-    supported: false
-    ci: false
   fedora43:
     supported: false
     ci: false
