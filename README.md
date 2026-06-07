@@ -115,11 +115,6 @@ epel_packages:
   - epel-next-release
 </pre></code>
 
-### defaults/default.yml
-<pre><code>
-
-</pre></code>
-
 ### defaults/OracleLinux.yml
 <pre><code>
 # OracleLinux RPM
