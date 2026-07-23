@@ -59,6 +59,9 @@ molecule:
   requirements:
     roles_extra:
       - deitkrachten.facts
+  prepare:
+    vars:
+      update_all: true
   converge:
     roles:
       - deitkrachten.facts
