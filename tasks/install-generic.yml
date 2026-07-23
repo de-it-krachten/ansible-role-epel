@@ -12,7 +12,7 @@
       https_proxy: "{{ _epel_https_proxy }}"
       http_proxy: "{{ _epel_http_proxy }}"
       no_proxy: "{{ _epel_no_proxy }}"
-  when: _epel_https_proxy|length > 0
+  when: _epel_https_proxy | length > 0
 
 - name: Download RPM signing key
   ansible.builtin.get_url:
