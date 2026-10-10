@@ -24,9 +24,6 @@ platforms:
   centos10s:
     supported: true
     ci: true
-  debian11:
-    supported: false
-    ci: false
   debian12:
     supported: false
     ci: false
